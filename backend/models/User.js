@@ -4,6 +4,7 @@ const userSchema = new mongoose.Schema({
   name: { type: String, required: [true, 'Please add a name'] },
   email: { type: String, required: [true, 'Please add an email'], unique: true },
   password: { type: String, required: [true, 'Please add a password'] },
+  guardian: { type: String, default: 'Beetle' }, // Beetle, Bear, Sprout, Owl
   avatar: { type: String, default: '' },        // profile picture filename
   bio: { type: String, default: '' },
   xp: { type: Number, default: 0 },

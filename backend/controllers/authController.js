@@ -14,7 +14,7 @@ const generateToken = (id) => {
 // @access  Public
 const registerUser = async (req, res) => {
   try {
-    const { name, email, password } = req.body;
+    const { name, email, password, guardian } = req.body;
 
     if (!name || !email || !password) {
       return res.status(400).json({ message: 'Please add all fields' });
@@ -36,6 +36,7 @@ const registerUser = async (req, res) => {
       name,
       email,
       password: hashedPassword,
+      guardian: guardian || 'Beetle'
     });
 
     if (user) {
