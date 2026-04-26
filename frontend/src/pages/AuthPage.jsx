@@ -26,11 +26,12 @@ const AuthPage = () => {
       if (isLogin) {
         await login(formData.email, formData.password);
       } else {
-        await register(formData.name || 'Eco Hero', formData.email, formData.password, selectedGuardian);
+        await register(formData.name || 'Eco Hero', formData.email, formData.password, selectedGuardian.toLowerCase());
       }
       navigate('/dashboard');
     } catch (err) {
-      setError(err.response?.data?.message || 'Authentication failed');
+      console.error('Auth Error:', err);
+      setError(err.response?.data?.message || 'Authentication failed. Please check your credentials.');
     } finally {
       setIsLoading(false);
     }

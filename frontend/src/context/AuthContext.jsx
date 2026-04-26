@@ -18,20 +18,25 @@ export const AuthProvider = ({ children }) => {
 
   const login = async (email, password) => {
     const response = await api.post('/auth/login', { email, password });
-    if (response.data) {
-      localStorage.setItem('user', JSON.stringify(response.data));
-      setUser(response.data);
+    if (response.data && response.data.token) {
+      // Save entire user object (which now includes token) for convenience
+      const userData = { ...response.data.user, token: response.data.token };
+      localStorage.setItem('user', JSON.stringify(userData));
+      setUser(userData);
+      return userData;
     }
-    return response.data;
+    return null;
   };
 
   const register = async (name, email, password, guardian) => {
     const response = await api.post('/auth/register', { name, email, password, guardian });
-    if (response.data) {
-      localStorage.setItem('user', JSON.stringify(response.data));
-      setUser(response.data);
+    if (response.data && response.data.token) {
+      const userData = { ...response.data.user, token: response.data.token };
+      localStorage.setItem('user', JSON.stringify(userData));
+      setUser(userData);
+      return userData;
     }
-    return response.data;
+    return null;
   };
 
   const logout = () => {

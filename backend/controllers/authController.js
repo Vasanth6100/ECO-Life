@@ -13,11 +13,12 @@ const generateToken = (id) => {
 // @route   POST /api/auth/register
 // @access  Public
 const registerUser = async (req, res) => {
+  console.log('Registration attempt:', req.body);
   try {
     const { name, email, password, guardian } = req.body;
 
-    if (!name || !email || !password) {
-      return res.status(400).json({ message: 'Please add all fields' });
+    if (!name || !email || !password || !guardian) {
+      return res.status(400).json({ message: 'Please add all fields including a guardian' });
     }
 
     // Check if user exists
@@ -36,21 +37,25 @@ const registerUser = async (req, res) => {
       name,
       email,
       password: hashedPassword,
-      guardian: guardian || 'Beetle'
+      guardian: guardian.toLowerCase()
     });
 
     if (user) {
       res.status(201).json({
-        _id: user.id,
-        name: user.name,
-        email: user.email,
         token: generateToken(user._id),
+        user: {
+          _id: user.id,
+          name: user.name,
+          email: user.email,
+          guardian: user.guardian
+        }
       });
     } else {
       res.status(400).json({ message: 'Invalid user data' });
     }
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    console.error('Registration error:', error);
+    res.status(500).json({ message: error.message || 'Server error during registration' });
   }
 };
 
@@ -69,10 +74,13 @@ const loginUser = async (req, res) => {
       await user.save();
       
       res.json({
-        _id: user.id,
-        name: user.name,
-        email: user.email,
         token: generateToken(user._id),
+        user: {
+          _id: user.id,
+          name: user.name,
+          email: user.email,
+          guardian: user.guardian
+        }
       });
     } else {
       res.status(400).json({ message: 'Invalid credentials' });
