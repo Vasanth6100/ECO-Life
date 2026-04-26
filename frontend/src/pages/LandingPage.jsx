@@ -47,7 +47,7 @@ const LandingPage = () => {
       {/* Hero Section */}
       <section className="hero-section section-padding" style={{ minHeight: '100vh', display: 'flex', alignItems: 'center' }}>
         <div className="container" style={{ display: 'grid', gridTemplateColumns: '1.2fr 0.8fr', gap: '40px', alignItems: 'center' }}>
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
@@ -66,7 +66,7 @@ const LandingPage = () => {
             </div>
           </motion.div>
 
-          <motion.div 
+          <motion.div
             className="hero-image-container flex-center"
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -81,7 +81,7 @@ const LandingPage = () => {
               position: 'absolute',
               zIndex: 0
             }}></div>
-            
+
             <div ref={earthRef} className="earth-container" style={{ width: '300px', height: '300px', position: 'relative', zIndex: 1 }}>
               {/* Simple CSS Earth placeholder */}
               <div style={{
@@ -96,10 +96,10 @@ const LandingPage = () => {
                 position: 'relative',
                 overflow: 'hidden'
               }}>
-                 {/* Face/Cute elements */}
-                 <div style={{ width: '40px', height: '10px', background: 'rgba(255,255,255,0.8)', borderRadius: '10px', position: 'absolute', top: '40%', left: '30%' }}></div>
-                 <div style={{ width: '40px', height: '10px', background: 'rgba(255,255,255,0.8)', borderRadius: '10px', position: 'absolute', top: '40%', right: '30%' }}></div>
-                 <div style={{ width: '30px', height: '15px', borderBottom: '4px solid rgba(255,255,255,0.8)', borderRadius: '50%', position: 'absolute', bottom: '35%' }}></div>
+                {/* Face/Cute elements */}
+                <div style={{ width: '40px', height: '10px', background: 'rgba(255,255,255,0.8)', borderRadius: '10px', position: 'absolute', top: '40%', left: '30%' }}></div>
+                <div style={{ width: '40px', height: '10px', background: 'rgba(255,255,255,0.8)', borderRadius: '10px', position: 'absolute', top: '40%', right: '30%' }}></div>
+                <div style={{ width: '30px', height: '15px', borderBottom: '4px solid rgba(255,255,255,0.8)', borderRadius: '50%', position: 'absolute', bottom: '35%' }}></div>
               </div>
             </div>
           </motion.div>
@@ -113,10 +113,10 @@ const LandingPage = () => {
             <h2 style={{ fontSize: '2.5rem', marginBottom: '16px' }}>Small actions are being lost in a big mess.</h2>
             <p style={{ color: 'var(--secondary-text)' }}>We make environmental impact visible, rewarding, and social.</p>
           </div>
-          
+
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '30px' }}>
             {features.map((f, i) => (
-              <motion.div 
+              <motion.div
                 key={i}
                 whileHover={{ y: -10 }}
                 className="neo-card"
@@ -141,7 +141,7 @@ const LandingPage = () => {
             </p>
             <Button variant="secondary">Explore Guilds</Button>
           </div>
-          
+
           <div className="floating-cards" style={{ position: 'relative', height: '400px' }}>
             {[
               { label: 'Daily Tracking', color: 'var(--accent-green)', top: '10%', left: '10%', rotate: -5 },
@@ -192,9 +192,9 @@ const LandingPage = () => {
       {/* CTA Banner */}
       <section className="cta-section section-padding">
         <div className="container">
-          <div className="glass-card" style={{ 
-            background: 'var(--primary-green)', 
-            padding: '80px', 
+          <div className="glass-card" style={{
+            background: 'var(--primary-green)',
+            padding: '80px',
             textAlign: 'center',
             color: 'white'
           }}>
@@ -223,3 +223,5 @@ const LandingPage = () => {
 };
 
 export default LandingPage;
+
+// redeploy trigger
