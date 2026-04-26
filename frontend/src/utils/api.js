@@ -1,8 +1,10 @@
 import axios from 'axios';
 
-// Use relative URL so Vite proxy handles it (avoids CORS)
+// Base URL can come from .env (VITE_API_URL) for production
+const API_URL = import.meta.env.VITE_API_URL || '';
+
 const api = axios.create({
-  baseURL: '/api',
+  baseURL: `${API_URL}/api`,
 });
 
 // Attach JWT token to every request
