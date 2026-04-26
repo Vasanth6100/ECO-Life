@@ -26,7 +26,7 @@ const AuthPage = () => {
       if (isLogin) {
         await login(formData.email, formData.password);
       } else {
-        await register(formData.name || 'Eco Hero', formData.email, formData.password);
+        await register(formData.name || 'Eco Hero', formData.email, formData.password, selectedGuardian);
       }
       navigate('/dashboard');
     } catch (err) {
